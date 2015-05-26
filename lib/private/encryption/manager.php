@@ -23,10 +23,8 @@
 namespace OC\Encryption;
 
 use OC\Files\Filesystem;
-use OC\Files\Storage\Shared;
 use OC\Files\Storage\Wrapper\Encryption;
 use OC\Files\View;
-use OCA\Files_Sharing\External\Storage;
 use OCP\Encryption\IEncryptionModule;
 use OCP\Encryption\IManager;
 use OCP\Files\Mount\IMountPoint;
@@ -208,7 +206,10 @@ class Manager implements IManager {
 				'mountPoint' => $mountPoint,
 				'mount' => $mount];
 
-			if (!($storage instanceof Shared) && !($storage instanceof Storage)) {
+
+			if (!($storage->instanceOfStorage('OC\Files\Storage\Shared'))
+				&& !($storage->instanceOfStorage('OC\Files\Storage\Storage')
+				)) {
 				$manager = \OC::$server->getEncryptionManager();
 				$util = new Util(
 					new View(),
