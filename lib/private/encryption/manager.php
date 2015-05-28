@@ -208,7 +208,7 @@ class Manager implements IManager {
 
 
 			if (!($storage->instanceOfStorage('OC\Files\Storage\Shared'))
-				&& !($storage->instanceOfStorage('OC\Files\Storage\Storage')
+				&& !($storage->instanceOfStorage('OCA\Files_Sharing\External\Storage')
 					&& !($storage->instanceOfStorage('OC\Files\Storage\ownCloud'))
 				)) {
 				$manager = \OC::$server->getEncryptionManager();
